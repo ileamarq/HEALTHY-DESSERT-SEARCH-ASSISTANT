@@ -15,8 +15,8 @@ headers = {
 }
 
 data = {
-    'inputs': {
-        'text': text
+    "inputs": {
+        "text": text
     },
     "response_mode": "blocking",
     "user": "healthy"
@@ -24,14 +24,17 @@ data = {
 
 if st.button('Query'):
     base_url = "https://api.dify.ai/v1"
-    path = "/complete-messages"
-    response = requests.post(base_url + path, json=data, headers=headers)
+    path = "/completion-messages"
+    response = requests.post(base_url + path, json=data, 
+    headers=headers)
 
     if response.status_code == 200:
-          st.success('Query submitted successfully')
-
-    result = response.json()
-    st.markdown('### Result of request:')
-    st.markdown(result['response'])
-
-    print(answer.content)
+     st.success('Query sent successfully')
+        
+     result = response.json()
+     st.markdown('### Result of request:')
+     st.markdown(result['answer'])
+     st.write("Thanks for using the application!")
+     print(response.content)
+    
+        
